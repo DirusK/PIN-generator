@@ -1,0 +1,19 @@
+pin-generation-key: your key here # 24-bytes key
+
+decimalization:
+  0: 6
+  1: 4
+  2: 9
+  3: 8
+  4: 3
+  5: 1
+  6: 2
+  7: 8
+  8: 4
+  9: 3
+  A: 2
+  B: 3
+  C: 3
+  D: 4
+  E: 8
+  F: 8

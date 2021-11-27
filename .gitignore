@@ -1,0 +1,33 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# IDEs and OS
+.idea/
+.vscode/
+.run/
+.DS_Store
+
+# Test binary, build with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Docker volumes
+volumes/*
+build/volumes/*
+
+# Configs
+cmd/*.yaml
+!cmd/*.tmpl.yaml
+
+# Vendoring
+vendor/
+
+# Structure
+!.keep
+database.yaml
