@@ -13,8 +13,9 @@ const (
 
 // Config defines the properties of the application configuration.
 type Config struct {
-	PINGenerationKey string            `yaml:"pin-generation-key"`
-	Decimalization   map[string]string `yaml:"decimalization"`
+	PINGenerationKey        string            `yaml:"pin-generation-key"`
+	Decimalization          map[string]string `yaml:"decimalization"`
+	PinVerificationKeyIndex string            `yaml:"pin-verification-key-index"`
 }
 
 func New(cfgFilePath string) (*Config, error) {

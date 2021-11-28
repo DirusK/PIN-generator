@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"pin-generation/pkg/visa"
 
 	"pin-generation/internal/card"
 	"pin-generation/internal/config"
@@ -28,6 +29,12 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
+	fmt.Printf("IBM-3624: for specified %s user's PIN is generated %s offset PIN \n", creditCard.PIN, pinOffset)
 
-	fmt.Printf("For specified %s user's PIN is generated %s offset PIN", creditCard.PIN, pinOffset)
+	visaGenerator := visa.New(state.PINGenerationKey, state.PinVerificationKeyIndex)
+	PVV, err := visaGenerator.GeneratePVV(creditCard.Number, creditCard.PIN)
+	if err != nil {
+		log.Fatalln(err)
+	}
+	fmt.Printf("VISA-PVV: for specified %s user's PIN is generated %s VISA PVV \n", creditCard.PIN, PVV)
 }

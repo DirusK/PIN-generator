@@ -19,15 +19,13 @@ func New(PINGenerationKey string, decimalization map[string]string) *Ibm {
 
 // GenerateOffsetPIN returns pin offset of specified params.
 func (ibm Ibm) GenerateOffsetPIN(cardNumber string, userPIN string) (string, error) {
-	var offsetPIN string
-
-	cipherText, err := cipher.TripleDesEncrypt(cardNumber[len(cardNumber)-16:], ibm.PINGenerationKey)
+	ciphertext, err := cipher.TripleDesEncrypt(cardNumber[len(cardNumber)-16:], ibm.PINGenerationKey)
 	if err != nil {
 		return "", err
 	}
 
 	var replaced string
-	for _, encrypted := range cipherText {
+	for _, encrypted := range ciphertext {
 		replaced += ibm.Decimalization[string(encrypted)]
 	}
 
@@ -35,6 +33,8 @@ func (ibm Ibm) GenerateOffsetPIN(cardNumber string, userPIN string) (string, err
 		i = 1
 		j = 0
 	)
+
+	var offsetPIN string
 	for i < len(userPIN)+1 {
 		naturalPin, err := strconv.ParseInt(replaced[j:i], 10, 32)
 		if err != nil {

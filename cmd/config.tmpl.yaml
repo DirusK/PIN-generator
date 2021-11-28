@@ -1,5 +1,7 @@
 pin-generation-key: your key here # 24-bytes key
 
+pin-verification-key-index: 1
+
 decimalization:
   0: 6
   1: 4
